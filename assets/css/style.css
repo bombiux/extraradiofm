@@ -1,0 +1,279 @@
+html, body {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+body {
+  background-image: url(/assets/images/Fondo_movil.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin: 0;
+  /* padding: 20px; Removed to prevent unwanted scrolling */
+  position: relative;
+}
+
+@media (max-width:768px) {
+  background-image: url(/assets/images/Fondo_movil.jpeg);
+
+}
+
+@media (min-width: 769px) {
+  body {
+    background-image: url(/assets/images/Fondo_Desktop.jpeg);
+  }
+}
+
+.logo-container {
+  margin-top: 10rem;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.radio-player-card {
+  width: 400px;
+  height: 150px;
+  background: linear-gradient(135deg, rgba(111, 141, 172, 0.7) 0%, rgba(0, 34, 77, 0.7) 100%);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  position: absolute;
+  top: calc(50% + 7.7rem);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.player-controls-container {
+  width: 100%;
+}
+
+.visualizer-container {
+  width: 100%;
+}
+
+
+
+.progress-bar-container {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.progress-bar-fill {
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.controls .btn-control {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.controls .btn-control:hover {
+  background-color: white;
+  color: #2c3e50;
+}
+
+.live-indicator {
+  background-color: #ff4b4b;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.live-indicator.live {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.live-text {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+}
+
+.volume-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.volume-slider {
+  width: 80px;
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: none;
+}
+
+.footer-url {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  display: none;
+  /* Hide on desktop */
+}
+
+/* --- Estilo para móvil standalone --- */
+.mobile-body {
+  background-color: #1a1a3d;
+  /* Azul oscuro principal */
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.mobile-container {
+  max-width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.mobile-player-card {
+  background: url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #6F8DAC 0%, #00224D 100%);
+}
+
+.player-content {
+  position: relative;
+  z-index: 2;
+}
+
+.bottom-section {
+  margin: 30px 0;
+  padding: 0 10px;
+}
+
+.section-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-icon i {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.section-icon span {
+  font-size: 0.8rem;
+  text-align: center;
+  color: white;
+}
+
+/* --- Estilos para Móviles (original) --- */
+@media (max-width: 768px) {
+
+  .logo-container,
+  .footer-url {
+    display: block;
+    /* Show on mobile */
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .radio-player-card {
+    width: 80vw;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(111, 141, 172, 0.7) 0%, rgba(0, 34, 77, 0.7) 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .row.g-0 {
+    height: 100% !important;
+  }
+
+  .player-controls-container {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .visualizer-container {
+    margin-bottom: 10px;
+  }
+
+  .visualizer-svg {
+    height: 20px;
+  }
+
+  .controls {
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .controls .btn-control {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    margin: 0;
+  }
+}

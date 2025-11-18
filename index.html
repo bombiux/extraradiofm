@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Extra 89.5 FM</title>
+
+    <!-- Standard SEO -->
+    <meta name="description" content="Escucha Radio Extra 89.5 FM en vivo. La mejor música y programas, ahora en tu navegador.">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="music.radio_station">
+    <!-- TODO: Reemplaza la siguiente URL con la URL de tu sitio en producción -->
+    <meta property="og:url" content="https://www.tu-dominio.com/">
+    <meta property="og:title" content="Radio Extra 89.5 FM">
+    <meta property="og:description" content="Escucha Radio Extra 89.5 FM en vivo. La mejor música y programas, ahora en tu navegador.">
+    <!-- TODO: Reemplaza la siguiente URL con la URL absoluta de tu imagen en producción -->
+    <meta property="og:image" content="https://www.tu-dominio.com/assets/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <!-- TODO: Reemplaza la siguiente URL con la URL de tu sitio en producción -->
+    <meta property="twitter:url" content="https://www.extraradio.com/">
+    <meta property="twitter:title" content="Radio Extra 89.5 FM">
+    <meta property="twitter:description" content="Escucha Radio Extra 89.5 FM en vivo. La mejor música y programas, ahora en tu navegador.">
+    <!-- TODO: Reemplaza la siguiente URL con la URL absoluta de tu imagen en producción -->
+    <meta property="twitter:image" content="https://www.tu-dominio.com/assets/images/logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/icono.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container text-center my-4">
+            <img src="assets/images/logo.png" alt="Extra FM 89.5 Logo" width="350">
+        </div>
+
+        <div class="radio-player-card mx-auto">
+    <div class="player-controls-container">
+        <div class="visualizer-container mb-4">
+            <svg id="waveform-svg" class="visualizer-svg" width="100%" height="30" viewBox="0 0 300 50" preserveAspectRatio="none">
+            </svg>
+        </div>
+
+        <!-- <div class="progress-bar-container mb-4">
+            <div class="progress-bar">
+                <div class="progress-bar-fill" style="width: 30%;"></div>
+            </div>
+        </div> -->
+
+        <div class="controls d-flex justify-content-center align-items-center">
+            <div class="live-indicator mr-3">
+                <span class="live-text">LIVE</span>
+            </div>
+            <button id="play-pause-btn" class="btn-control mx-3">
+                <i class="fas fa-play"></i>
+            </button>
+            <div class="volume-control ml-3">
+                <i class="fas fa-volume-up volume-icon"></i>
+                <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <!-- Audio element for radio stream -->
+    <!-- Using the correct stream URL for Extra 89.5 FM -->
+<audio id="radio-stream" src="https://streaming.extraradio.com/stream.mp3" preload="auto" crossorigin="anonymous" autoplay></audio>
+    <!-- Adding cache busting parameter to ensure latest JS is loaded -->
+    <script src="js/main.js?v=1.2"></script>
+</body>
+</html>
