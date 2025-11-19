@@ -9,106 +9,15 @@ let isPlaying = false;
 // Set initial volume
 audio.volume = 0.7;
 
-// Try to play audio automatically on page load with sound enabled (attempt to bypass muted autoplay)
-try {
-    // Keep the audio unmuted initially (this may work in some cases)
-    audio.muted = false;
-
-    // Attempt to play the audio when the page loads
-    const playPromise = audio.play();
-
-    if (playPromise !== undefined) {
-        playPromise
-            .then(() => {
-                console.log("Autoplay started successfully with sound");
-                // If autoplay works, update UI to show it's playing
-                playPauseBtn.innerHTML = pauseIcon;
-                isPlaying = true;
-
-                // Change LIVE indicator to show playing state
-                const liveIndicator = document.querySelector('.live-text');
-                if (liveIndicator) {
-                    liveIndicator.textContent = 'LIVE';
-                    liveIndicator.parentElement.style.backgroundColor = '#4CAF50'; // Verde
-                    liveIndicator.parentElement.classList.add('live'); // Añadir animación de pulso
-                }
-
-                // Initialize audio context for visualizer after successful play attempt
-                ensureAudioContextIsRunning();
-            })
-            .catch(error => {
-                console.log("Autoplay with sound failed (this is expected in many browsers):", error);
-                // If autoplay with sound fails, fallback to muted autoplay
-                audio.muted = true;
-
-                // Try to play muted immediately after
-                const mutedPlayPromise = audio.play();
-                if (mutedPlayPromise !== undefined) {
-                    mutedPlayPromise
-                        .then(() => {
-                            console.log("Muted autoplay started as fallback");
-                            // Update UI to indicate it's ready to play
-                            playPauseBtn.innerHTML = pauseIcon;
-                            isPlaying = true;
-
-                            // Indicate that stream is loaded but needs user interaction to unmute
-                            const liveIndicator = document.querySelector('.live-text');
-                            if (liveIndicator) {
-                                liveIndicator.textContent = 'CLICK TO UNMUTE';
-                                liveIndicator.parentElement.style.backgroundColor = '#FF9800'; // Naranja
-                            }
-                        })
-                        .catch(mutedError => {
-                            console.log("Even muted autoplay failed:", mutedError);
-                            audio.muted = false;
-                            // Reset UI to initial state
-                            playPauseBtn.innerHTML = playIcon;
-                            isPlaying = false;
-                        });
-                }
-
-                // Initialize audio context even if autoplay failed
-                ensureAudioContextIsRunning();
-            });
-    }
-} catch (error) {
-    console.log("Autoplay with sound not allowed:", error);
-    // Fallback: try muted autoplay
-    audio.muted = true;
-
-    try {
-        const mutedPlayPromise = audio.play();
-        if (mutedPlayPromise !== undefined) {
-            mutedPlayPromise
-                .then(() => {
-                    console.log("Muted autoplay started as fallback");
-                    // Update UI to indicate it's ready to play
-                    playPauseBtn.innerHTML = pauseIcon;
-                    isPlaying = true;
-
-                    // Indicate that stream is loaded but needs user interaction to unmute
-                    const liveIndicator = document.querySelector('.live-text');
-                    if (liveIndicator) {
-                        liveIndicator.textContent = 'CLICK TO UNMUTE';
-                        liveIndicator.parentElement.style.backgroundColor = '#FF9800'; // Naranja
-                    }
-                })
-                .catch(mutedError => {
-                    console.log("Even muted autoplay failed:", mutedError);
-                    audio.muted = false;
-                });
-        }
-    } catch (mutedError) {
-        console.log("Even muted autoplay not allowed:", mutedError);
-        audio.muted = false;
-    }
-
-    // Initialize audio context even if autoplay failed
-    ensureAudioContextIsRunning();
-}
-
-// Try to initialize audio context immediately as well
+// Initialize audio context on page load
 ensureAudioContextIsRunning();
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Automatically click the play button to start the radio
+    if (playPauseBtn) {
+        playPauseBtn.click();
+    }
+});
 
 // Visualizer setup
 const svg = document.getElementById('waveform-svg');
